@@ -1,0 +1,217 @@
+.likes-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.like-btn,
+.dislike-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.likes-sum {
+    width: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.like-btn:hover,
+.dislike-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.like-btn {
+    color: #666;
+    border-color: #28a745;
+}
+
+.like-btn:hover {
+    background: #f8f9fa;
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.like-btn.active {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.like-btn.active:hover {
+    background: #218838;
+}
+
+.dislike-btn {
+    color: #666;
+    border-color: #dc3545;
+}
+
+.dislike-btn:hover {
+    background: #f8f9fa;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.dislike-btn.active {
+    background: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.dislike-btn.active:hover {
+    background: #c82333;
+}
+
+.like-icon,
+.dislike-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+
+.like-count,
+.dislike-count {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+.like-btn.loading,
+.dislike-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.like-btn.loading::after,
+.dislike-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.likes-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.likes-notification.show {
+    transform: translateX(0);
+}
+
+.likes-notification.success {
+    background: #28a745;
+}
+
+.likes-notification.error {
+    background: #dc3545;
+}
+
+/* Отключенное состояние кнопок */
+.like-btn:disabled,
+.dislike-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .likes-container {
+        gap: 8px;
+    }
+    
+    .like-btn,
+    .dislike-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .like-icon,
+    .dislike-icon {
+        font-size: 14px;
+    }
+    
+    .likes-notification {
+        right: 10px;
+        left: 10px;
+        top: 10px;
+        text-align: center;
+        transform: translateY(-100%);
+    }
+    
+    .likes-notification.show {
+        transform: translateY(0);
+    }
+}
+
+/* Just an effect i like to use on buttons */
+.like-btn,
+.dislike-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.like-btn::before,
+.dislike-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 1s, height 1s;
+}
+
+.like-btn:active::before,
+.dislike-btn:active::before {
+    width: 200px;
+    height: 200px;
+}
+
+.like-btn.hover,
+.dislike-btn.hover {
+    transform: scale(1.05);
+}
