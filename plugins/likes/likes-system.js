@@ -108,14 +108,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const voteType = button.dataset.vote;
         const pageUrl = window.location.href;
         
-        // Блокируем кнопки во время запроса
         const buttons = container.querySelectorAll('.like-btn, .dislike-btn');
         buttons.forEach(btn => btn.disabled = true);
         
-        // Добавляем класс загрузки
         button.classList.add('loading');
         
-        // Отправляем запрос
         sendVoteRequest(postId, voteType, pageUrl, button, container);
     });
     
